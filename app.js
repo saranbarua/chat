@@ -1,5 +1,8 @@
 //internal import
 const {notFoundHandler, errorHandler} = require("./middlewares/common/errorHandler")
+const loginRouter = require('./routers/loginRouter')
+const inboxRouter = require('./routers/inboxRouter')
+const usersRouter = require('./routers/userRouter')
 
 //external import
 const express = require('express');

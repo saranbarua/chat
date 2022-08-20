@@ -3,8 +3,8 @@ const express= require('express')
 const router= express.Router();
 
 //internal import
-const {getLogin} = require("../controllers/loginController")
-//log in page
-router.get("/" , getLogin)
+const {getUsers} = require("../controllers/usersController")
+//users in page
+router.get("/" , getUsers)
 
 module.exports= router;

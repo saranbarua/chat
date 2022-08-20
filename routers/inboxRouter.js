@@ -3,8 +3,8 @@ const express= require('express')
 const router= express.Router();
 
 //internal import
-const {getLogin} = require("../controllers/loginController")
+const {getInbox} = require("../controllers/inboxController")
 //log in page
-router.get("/" , getLogin)
+router.get("/" , getInbox)
 
 module.exports= router;
