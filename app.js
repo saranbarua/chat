@@ -1,3 +1,7 @@
+//internal import
+const {notFoundHandler, errorHandler} = require("./middlewares/common/errorHandler")
+
+//external import
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
@@ -29,8 +33,15 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //router handling
+app.use("/" , loginRouter)
+app.use("/user" , usersRouter)
+app.use("/inbox" , inboxRouter)
+//404 not found handler
+app.use(notFoundHandler);
 
-//error handling
+//common error handling
+app.use(errorHandler);
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening from port ${process.env.PORT} `)
