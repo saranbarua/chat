@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./stylesheets/style.css" />
     <script src="./js/toastify.js"></script>
   </head>
+
   <body>
     <div class="menu">
       <div class="menu-item"><a href="/inbox">Inbox</a></div>
@@ -53,6 +54,8 @@
       </div>
     </div>
 
+    <!-- form data -->
+
     <div class="modal-wrapper" id="add-user-modal">
       <div class="modal">
         <a href="#" onclick="closeModal()" class="modal-close">+</a>
@@ -60,22 +63,37 @@
           <h2>Create New User</h2>
         </div>
         <div class="modal-body">
-          <form id="add-user-form">
+
+          <form method="post"
+          action="/users"
+          enctype="multipart/form-data"
+          id="add-user-form">
+
             <input type="text" placeholder="enter name" name="name" />
+            <p class="error name-error"></p>
+
             <p class="error show">This is error</p>
             <input type="text" placeholder="enter email" name="email" />
+            <p class="error email-error"></p>
+
             <input type="text" placeholder="enter mobile" name="mobile" />
+            <p class="error mobile-error"></p>
+
             <input
               type="password"
               placeholder="enter password"
               name="password"
             />
+            <p class="error password-error"></p>
+
             <input type="file" name="avatar" />
+            <p class="error avatar-error"></p>
             <input type="submit" value="Submit" />
           </form>
         </div>
       </div>
     </div>
+    
     <script>
       const modal = document.querySelector("#add-user-modal");
       function closeModal() {
