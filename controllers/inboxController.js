@@ -1,9 +1,7 @@
 function getInbox(req,res,next){
-    res.render("inbox",{
-        title: "inbox  page"
-    })
+    res.render("inbox")
     }
     
-    module.exports ={
+module.exports ={
         getInbox
     }

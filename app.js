@@ -37,7 +37,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 //router handling
 app.use("/" , loginRouter)
-app.use("/user" , usersRouter)
+app.use("/users" , usersRouter)
 app.use("/inbox" , inboxRouter)
 //404 not found handler
 app.use(notFoundHandler);
