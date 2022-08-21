@@ -30,6 +30,7 @@ const peopleSchema = mongoose.Schema(
       default: "user",
     },
   },
+  //object add or delete date and time
   {
     timestamps: true,
   }
