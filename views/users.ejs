@@ -72,7 +72,7 @@
             <input type="text" placeholder="enter name" name="name" />
             <p class="error name-error"></p>
 
-            <p class="error show">This is error</p>
+        
             <input type="text" placeholder="enter email" name="email" />
             <p class="error email-error"></p>
 
@@ -102,15 +102,11 @@
         text: "User was added successfully! Reloading the list...",
         duration: 1000,
       });
-      function closeModal() {
-        modal.style.display = "none";
-      }
-      function openModal() {
-        modal.style.display = "block";
-      }
+
       // form submit handler
       form.onsubmit = async function (event) {
         event.preventDefault();
+
         // clear errors first
         const errorPlaceholders = document.querySelectorAll("p.error");
         for (let i = 0; i < errorPlaceholders.length; i++) {
@@ -122,6 +118,7 @@
             inputErrors[j].classList.remove("error");
           }
         }
+
         // prepare the form data
         const formData = new FormData(form);
         // send the request to server
@@ -129,6 +126,7 @@
           method: "POST",
           body: formData,
         });
+
         // get response
         let result = await response.json();
         // handle error and response

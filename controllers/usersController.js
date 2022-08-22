@@ -1,6 +1,10 @@
 //external import
  const bcrypt = require("bcrypt")
-
+ const { unlink } = require("fs");
+ const path = require("path");
+ 
+ // internal imports
+ const User = require("../models/People");
 
  function getUsers(req,res,next){
     res.render("users")
