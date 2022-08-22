@@ -6,9 +6,17 @@
  // internal imports
  const User = require("../models/People");
 
- function getUsers(req,res,next){
-    res.render("users")
-    }
+// get users page
+async function getUsers(req, res, next) {
+  try {
+    const users = await User.find();
+    res.render("users", {
+      users: users,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
     
 // add users function
   async function addUser(req,res, next){

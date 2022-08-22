@@ -39,16 +39,25 @@
             </tr>
           </thead>
           <tbody id="users-table">
-            <tr id="">
+            <!-- to show data from all users using foreach loop -->
+            <% user.foreach(function(user) { %>
+            <tr id="<%= users._id %>">
               <td class="name">
-                <img src="./images/user1.png" />
-                <span>User 1</span>
+                <% if (users.avatar) { %>
+                <img src="./uploads/avatar/<%= users.avatar %>" />
+                <% } else { %>
+                <img src="./images/nophoto.png" />
+                <% } %>
+
+                <span><% users.name %> </span>
               </td>
-              <td>email@email.com</td>
+              <td><% users.email %></td>
               <td class="manage">
                 <img src="./images/trash.png" alt="Delete" />
               </td>
             </tr>
+
+            <% }); %>
           </tbody>
         </table>
       </div>
@@ -72,7 +81,6 @@
             <input type="text" placeholder="enter name" name="name" />
             <p class="error name-error"></p>
 
-        
             <input type="text" placeholder="enter email" name="email" />
             <p class="error email-error"></p>
 
