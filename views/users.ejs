@@ -40,24 +40,30 @@
           </thead>
           <tbody id="users-table">
             <!-- to show data from all users using foreach loop -->
-            <% user.foreach(function(user) { %>
-            <tr id="<%= users._id %>">
+
+            <% users.forEach(function(user) { %>
+            <tr id="<%= user._id %>">
               <td class="name">
-                <% if (users.avatar) { %>
-                <img src="./uploads/avatar/<%= users.avatar %>" />
+                <% if (user.avatar) { %>
+                <img src="./uploads/avatars/<%= user.avatar %>" />
                 <% } else { %>
                 <img src="./images/nophoto.png" />
                 <% } %>
-
-                <span><% users.name %> </span>
+                <span><%= user.name %></span>
               </td>
-              <td><% users.email %></td>
+              <td><%= user.email %></td>
               <td class="manage">
-                <img src="./images/trash.png" alt="Delete" />
+                <img
+                  src="./images/trash.png"
+                  alt="Delete"
+                  onclick="deleteUser('<%= user._id %>')"
+                />
               </td>
             </tr>
-
+            
             <% }); %>
+
+
           </tbody>
         </table>
       </div>
