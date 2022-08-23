@@ -16,7 +16,7 @@ async function login(req,res,next){
        //find a user who has this email/username
        const user = await User.findOne({
          $or: [{email:req.body.username} ,{mobile:req.body.username}]
-       })  
+       });
        if(user & user._id){
          const isValidPassword  = await bcrypt.compare(
           req.body.password, //plain text password to comparing with db pass
@@ -35,7 +35,7 @@ async function login(req,res,next){
             });
 
             //set cookie
-             res.cookie(process.env.COOLI_NAME,
+             res.cookie(process.env.COOKIE_NAME,
               token, {
                  maxAge:process.env.JWT_EXPIRY,
                  httpOnly:true,
@@ -43,7 +43,9 @@ async function login(req,res,next){
                 });
 
                 res.locals.loggedInUser =userObject //after user log in admin can acces any information.
-                 res.render("inbox"); //after log in to redirect inbox
+
+                 res.render("inbox"); 
+                 //after log in to redirect inbox
             }else{
            throw createError("log in failed")
           }
@@ -51,7 +53,7 @@ async function login(req,res,next){
        }else{
         throw createError("log in failed")
       }
-    } catch (error) {
+    } catch (err) {
       res.render("index",
       {
         data:{
