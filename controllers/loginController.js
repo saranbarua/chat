@@ -15,22 +15,23 @@ async function login(req,res,next){
     try {
        //find a user who has this email/username
        const user = await User.findOne({
-         $or: [{email:req.body.username} ,{mobile:req.body.username}]
+         $or: [{email: req.body.username} ,{mobile:req.body.username}],
        });
-       if(user & user._id){
+
+       if(user && user._id){
          const isValidPassword  = await bcrypt.compare(
-          req.body.password, //plain text password to comparing with db pass
-          user.password ) //database store password
+          req.body.password,  //plain text password to comparing with db pass
+          user.password ); //database store password
 
           if(isValidPassword){
             const userObject =
             { username:user.name,
+              mobile: user.mobile,
              email: user.email,
-             mobile: user.mobile,
              role: "user"
              };
              //generate to token
-             const token = jwt.sign(userObject,process.env.JWT_SECRET,{
+             const token = jwt.sign(userObject, process.env.JWT_SECRET,{
             expiresIn:process.env.JWT_EXPIRY
             });
 
@@ -51,7 +52,7 @@ async function login(req,res,next){
           }
 
        }else{
-        throw createError("log in failed")
+        throw createError("log in failed form")
       }
     } catch (err) {
       res.render("index",
