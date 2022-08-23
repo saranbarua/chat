@@ -4,7 +4,7 @@ const router= express.Router();
 
 
 //internal import
-const {getLogin, login} = require("../controllers/loginController")
+const {getLogin, login,logout} = require("../controllers/loginController")
 const decorateHtmlResponse= require('../middlewares/common/decorateHtmlResponse')
 const { doLoginValidators,
     doLoginValidationHandler,}= require("../middlewares/login/logInValidator")
@@ -18,5 +18,8 @@ router.post("/", decorateHtmlResponse (page_title),
                      doLoginValidators,
                    doLoginValidationHandler, 
                   login)
+
+//log out
+router.delete("/", logout)
 
 module.exports= router;
