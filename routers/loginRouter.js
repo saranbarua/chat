@@ -8,12 +8,15 @@ const {getLogin, login} = require("../controllers/loginController")
 const decorateHtmlResponse= require('../middlewares/common/decorateHtmlResponse')
 const { doLoginValidators,
     doLoginValidationHandler,}= require("../middlewares/login/logInValidator")
+
+    const page_title ="Login"
     
 //log in page
-router.get("/" , decorateHtmlResponse ("Login"), getLogin)
+router.get("/" , decorateHtmlResponse (page_title), getLogin)
 
-router.post("/",  doLoginValidators,
-                 doLoginValidationHandler, 
-                 login)
+router.post("/", decorateHtmlResponse (page_title),
+                     doLoginValidators,
+                   doLoginValidationHandler, 
+                  login)
 
 module.exports= router;

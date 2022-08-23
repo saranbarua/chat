@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 
 //import inernal
-
 const User = require("../models/People");
 
 function getLogin(req,res,next){
