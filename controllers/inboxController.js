@@ -3,7 +3,7 @@ const createError = require("http-errors");
 // internal imports
 const User = require("../models/People");
 const Conversation = require("../models/Conversation");
-// const Message = require("../models/Message");
+const Message = require("../models/Message");
 const escape = require("../utilities/escape");
 
 // get inbox page

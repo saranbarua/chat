@@ -5,10 +5,10 @@ const decorateHtmlResponse= require('../middlewares/common/decorateHtmlResponse'
 
 //internal import
 const {getInbox,
-       searchUser,
-       addConversation,
-    getMessages,
-   sendMessage  
+   searchUser,
+   addConversation,
+   getMessages,
+   sendMessage, 
 }= require("../controllers/inboxController")
 const {checkLogin}= require("../middlewares/common/checkLogIn")
 const attachmentUpload = require("../middlewares/inbox/attachmentUpload");
