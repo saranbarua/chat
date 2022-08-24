@@ -7,10 +7,10 @@
     <meta name="author" content="Saran Barua" />
     <meta name="owner" content="saranbarua.com" />
     <title><%= title %></title>
-    <link rel="shortcut icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./stylesheets/toastify.css" />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <script src="./js/toastify.js"></script>
+    <link rel="shortcut icon" href="../public/images/favicon.png" />
+    <link rel="stylesheet" href="../public/stylesheets/toastify.css" />
+    <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <script src="../public/js/toastify.js"></script>
   </head>
   <body>
     <div class="menu">
@@ -55,8 +55,8 @@
     </div>
 
     <!-- to send azax requst  -->
-<script>
- const logoutToast = Toastify({
+    <script>
+      const logoutToast = Toastify({
         text: "You are being logged out...",
         duration: 1000,
       });
@@ -69,7 +69,6 @@
           window.location.replace("/");
         }, 1000);
       }
-</script>
-
+    </script>
   </body>
 </html>

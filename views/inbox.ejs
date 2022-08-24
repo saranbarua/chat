@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Sumit Saha" />
-    <meta name="owner" content="learnwithsumit.com" />
+    <meta name="author" content="Saran Barua" />
+    <meta name="owner" content="saran" />
     <title><%= title %></title>
-    <link rel="shortcut icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./stylesheets/toastify.css" />
-    <link rel="stylesheet" href="./stylesheets/style.css" />
-    <script src="./js/toastify.js"></script>
-    <script src="./js/moment.js"></script>
+    <link rel="shortcut icon" href="../public/images/favicon.png" />
+    <link rel="stylesheet" href="../public/stylesheets/toastify.css" />
+    <link rel="stylesheet" href="../public/stylesheets/style.css" />
+    <script src="../public/js/toastify.js"></script>
+    <script src="../public/js/moment.js"></script>
   </head>
   <body>
     <div class="menu">
@@ -21,11 +21,11 @@
       <div class="menu-item">
         <% if (loggedInUser && loggedInUser.avatar) { %>
         <img
-          src="./uploads/avatars/<%= loggedInUser.avatar %>"
+          src="../public/uploads/avatars/loggedInUser.avatar %>"
           alt="<%= loggedInUser.name %>"
         />
         <% } else { %>
-        <img src="./images/nophoto.png" alt="<%= loggedInUser.name %>" />
+        <img src="../public/images/nophoto.png" alt="<%= loggedInUser.name %>" />
         <% } %>
         <a href="#" onclick="logout()">Logout</a>
       </div>
@@ -39,21 +39,22 @@
       <div id="search-container">
         <input type="text" placeholder="Search" />
       </div>
+
       <div id="conversation-list">
-        <% data.forEach(function(conversation) { %>
+        <% data.forEach (function(conversation) { %>
         <!-- conversation creator is same to logged in user, so we need to show participant name and avatar -->
         <% if(conversation.creator.id == loggedInUser.userid) { %>
-        <div
+        <div 
           class="conversation"
           onclick="getMessages('<%= conversation._id %>', '<%= conversation.participant.name %>')"
         >
           <% if (conversation.participant.avatar) { %>
           <img
-            src="./uploads/avatars/<%= conversation.participant.avatar %>"
+            src="../public//uploads/avatars/<%= conversation.participant.avatar %>"
             alt="<%= conversation.participant.name %>"
           />
           <% } else { %>
-          <img src="./images/nophoto.png" />
+          <img src="../public//images/nophoto.png" />
           <% } %>
           <div class="title-text"><%= conversation.participant.name %></div>
           <div class="conversation-date">
@@ -67,11 +68,11 @@
         >
           <% if (conversation.creator.avatar) { %>
           <img
-            src="./uploads/avatars/<%= conversation.creator.avatar %>"
+            src="../public/uploads/avatars/<%= conversation.creator.avatar %>"
             alt="<%= conversation.creator.name %>"
           />
           <% } else { %>
-          <img src="./images/nophoto.png" />
+          <img src="../public//images/nophoto.png" />
           <% } %>
           <div class="title-text"><%= conversation.creator.name %></div>
           <div class="conversation-date">
@@ -82,7 +83,7 @@
 
         <!-- show no conversation placeholder image for 0 conversations -->
         <% if(data && data.length === 0) { %>
-        <div class="nothing"><img src="./images/no-conversation.svg" /></div>
+        <div class="nothing"><img src="../public/images/no-conversation.svg" /></div>
         <% } %>
       </div>
 
@@ -92,7 +93,7 @@
 
       <div id="chat-title">
         <span id="conversation-partner"></span>
-        <img src="./images/trash.png" alt="Delete Conversation" />
+        <img src="../public/images/trash.png" alt="Delete Conversation" />
       </div>
 
       <!-- placeholder div if no messages are in messages area -->
@@ -103,7 +104,7 @@
       <!-- send message form -->
       <form id="chat-form" method="post" enctype="multipart/form-data">
         <label for="attachment"
-          ><img src="./images/attachment.png" alt="Add Attachment"
+          ><img src="../public/images/attachment.png" alt="Add Attachment"
         /></label>
         <input
           type="file"
