@@ -1,5 +1,6 @@
 //external import
 const express= require('express') 
+const { check } = require("express-validator");
 const router= express.Router();
 
 //internal import
@@ -10,10 +11,10 @@ const {addUserValidators, addUserValidationHandler}  = require("../middlewares/u
 const {checkLogin}= require("../middlewares/common/checkLogIn")
 
 //users in page
-router.get("/" ,decorateHtmlResponse ("User"), checkLogin, getUsers)
+router.get("/" ,decorateHtmlResponse ("Users"), checkLogin, getUsers)
 
 //add user""
-router.post("/", avatarUpload,addUserValidators,addUserValidationHandler, addUser )
+router.post("/", checkLogin,avatarUpload,addUserValidators,addUserValidationHandler, addUser )
 
 //remove id and user
 router.delete("/:id", removeUser)
